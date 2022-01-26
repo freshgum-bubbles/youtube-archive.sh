@@ -28,8 +28,7 @@ download () {
         --embed-subs \
         -i \
         --embed-thumbnail \
-        --http-chunk-size 10M \er (experimental)
-
+        --http-chunk-size 10M \
         "https://youtube.com/$2"
         popd
 }
