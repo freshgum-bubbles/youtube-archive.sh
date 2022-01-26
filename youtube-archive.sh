@@ -14,8 +14,23 @@ download () {
         local directory="/home/freshgum/YouTube Archives/$1"
         mkdir -p "$directory"
         pushd "$directory"
-        # youtube-dl --download-archive https://youtube.com/$2 -o "%(title).%(ext)"
-        $COMMAND --playlist-reverse -o '%(playlist_index)s - %(title)s.%(ext)s' --write-annotations --download-archive .archive --add-metadata --write-info-json --write-thumbnail -f bestvideo[ext=vp9]+bestaudio[ext=opus]/bestvideo+bestaudio --merge-output-format mkv --all-subs --embed-subs -i --embed-thumbnail "https://youtube.com/$2" --http-chunk-size 10M
+        
+        # Finally, download the channel from YouTube.
+        $COMMAND --playlist-reverse \
+        -o '%(playlist_index)s - %(title)s.%(ext)s' \
+        --write-annotations \
+        --download-archive .archive \
+        --add-metadata \
+        --write-info-json \
+        --write-thumbnail -f bestvideo[ext=vp9]+bestaudio[ext=opus]/bestvideo+bestaudio \
+        --merge-output-format mkv \
+        --all-subs \
+        --embed-subs \
+        -i \
+        --embed-thumbnail \
+        --http-chunk-size 10M \er (experimental)
+
+        "https://youtube.com/$2"
         popd
 }
 
